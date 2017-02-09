@@ -83,7 +83,7 @@ def test_get_seq():
 #------------------BAM-----------------------------
 """ returns a dictionary of cellxlabel for average 5p cut"""
 """ TODO read filtering in bam file"""
-""" TODO: """
+""" TODO: binarization of data per bam file and per all"""
 """ could not decipher what this function returns; cut counts per position?"""
 def get_bam5p(bdir, label_dic, strands=['+', '-'], fle_tag="TF", #genomic_window_size=200,\
               force_read=False, verbose=1):
@@ -102,6 +102,7 @@ def get_bam5p(bdir, label_dic, strands=['+', '-'], fle_tag="TF", #genomic_window
             for label in label_dic[cell].keys():
                 dta[cell][label] = {}
                 for chrom in label_dic[cell][label].keys():
+                    chroms = str(chrom) if not chrom == 23 else 'X'
                     Nx = len(label_dic[cell][label][chrom])
                     window_size = label_dic[cell][label][chrom][0][1] - label_dic[cell][label][chrom][0][0]
                     #dta[cell][label][chrom] = np.zeros((Nx, window_size * len(strands)), dtype=np.float)
@@ -111,7 +112,7 @@ def get_bam5p(bdir, label_dic, strands=['+', '-'], fle_tag="TF", #genomic_window
                         gi = 0
                         for grange in label_dic[cell][label][chrom]:
                             # could not decipher what this function returns; cut counts per position?
-                            temp = reads["chr%s,%i,%i,+" % (chrom, grange[0], grange[1])]
+                            temp = reads["chr%s,%i,%i,+" % (chroms, grange[0], grange[1])]
                             #si = 0
                             for strand in strands:
                                 dta[cell][label][chrom][gi,:] += temp[strand]
@@ -183,6 +184,7 @@ def get_label_count(fle, N, remove_cell=[], fle_tag='', force_read=False, verbos
         Nx       = int(N / 2.0 / nb_cells) # pos|neg label per cell are equal
         NxB      = min([ count_dic[i]['B'] for i in count_dic.keys() ])
         NxU      = min([ count_dic[i]['U'] for i in count_dic.keys() ])
+        print nb_cells, Nx, NxB, NxU
         Nx       = min([NxB, NxU, Nx])
         Nnew     = Nx * 2 * nb_cells
 

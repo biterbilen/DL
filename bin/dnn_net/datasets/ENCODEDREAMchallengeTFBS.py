@@ -4,6 +4,7 @@ import cPickle
 from glob import glob
 import gzip
 
+import random
 import numpy as np
 from keras.utils import np_utils
 
@@ -12,11 +13,11 @@ from ..utils.data_utils import get_meta, get_label_count, get_label, get_bam5p, 
 
 """ dta_dir should contain subfolders called misc, labels, & DNAse"""
 """N is set to the Nanog's B label count"""
-def load_data(tf, N=65836, train_frac=0.8, remove_cell=['SK-N-SH'], \
+def load_data(tf, N=65836, train_frac=0.8, version = 0.1, remove_cell=['SK-N-SH'], \
               dta_dir='/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484', \
               force_read=False, verbose=1):
 
-    pkl_fle = tf + '.data.pkl.gz'
+    pkl_fle = 'v' + str(version) + '.' + tf + '.data.pkl.gz'
     try:
         if force_read:
             raise Exception('forced_read')
@@ -55,8 +56,10 @@ def load_data(tf, N=65836, train_frac=0.8, remove_cell=['SK-N-SH'], \
                         for gi in range(genomic_window_size):
                             i1 = gi * features
                             i2 = (gi + 1) * features
-                            X[label][i[label]][i1:i2] = \
-                                [ bam5p_dic[cell][label][chrom][ni][gi] ] + nuc2ord(seq_dic[cell][label][chrom][ni][gi])
+                            nuc = seq_dic[cell][label][chrom][ni][gi]
+                            if not nuc in 'ACGT':
+                                nuc = random.choice(['A','C','G','T'])
+                            X[label][i[label]][i1:i2] = [ bam5p_dic[cell][label][chrom][ni][gi] ] + nuc2ord(nuc)            
                     del label_dic[cell][label][chrom]
                     del bam5p_dic[cell][label][chrom]
                     del seq_dic[cell][label][chrom]
@@ -88,8 +91,8 @@ def load_data(tf, N=65836, train_frac=0.8, remove_cell=['SK-N-SH'], \
         print "FUNCTION " + myself() + " DTA:"
         print 'X_train' + str(X_train.shape)
         print 'X_test' + str(X_train.shape)
-        print 'y_train' + str(y_train.shape)
-        print 'y_test' + str(y_train.shape)
+        print 'y_train' + str(y_test.shape)
+        print 'y_test' + str(y_test.shape)
         print
 
     return (X_train, y_train), (X_test, y_test)
