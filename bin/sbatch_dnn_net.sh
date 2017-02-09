@@ -1,9 +1,9 @@
 #!/bin/bash - 
 #===============================================================================
 #
-#          FILE: sbatch_tf_net.sh
+#          FILE: sbatch_dnn_net.sh
 # 
-#         USAGE: ./sbatch_tf_net.sh 
+#         USAGE: ./sbatch_dnn_net.sh 
 # 
 #   DESCRIPTION: 
 # 
@@ -47,12 +47,12 @@ DNN() {
 	if [[ ,${o[jobnames]}, =~ ,$jobname, ]]; then 
 		names=($(ls $indir/labels/*.train.labels.tsv.gz))
 		names=(${names[@]##*/})
+		names=(${names[@]/.train.labels.tsv.gz/})
 		qcmd=$(cat <<- END
 			names=(${names[@]})
 			name=\${names[\$${o[stiv]}]}
 			$(declare -f DNNpi)
-			name=${name%/}
-			DNNpi \${name/.train.labels.tsv.gz/}
+			DNNpi \$name
 		END
 		)
 		jobnames+=($jobname$analysisdirbase)
@@ -64,6 +64,6 @@ DNN() {
 
 }
 
-slurmMain DNN --jobnames=pi --datadir=/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484 --t=6 --tmin=20 --nc=2 --queue=normal
+slurmMain DNN --jobnames=pi --datadir=/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484 --t=6 --tmin=20 --nc=3 --queue=normal
 
 

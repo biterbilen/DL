@@ -1,0 +1,67 @@
+Wed Feb  8 22:19:06 PST 2017
+sh-2-21.local
+FUNCTION Wed Feb 8 22:19:06 PST 2017: DNNpi GATA3
+Using Theano backend.
+[806215 refs]
+1 32918 145536 50681057
+Parsed /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/labels/GATA3.train.labels.tsv.gz for counts
+Wrote GATA3.train.labels.tsv.gz.count.pkl.gz
+FUNCTION get_label_count DTA:
+N= 65836  Nx= 32918  Nnew= 65836
+{'A549': {'A': 850143, 'B': 145536, 'U': 50681057}}
+
+Parsed /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/labels/GATA3.train.labels.tsv.gz to sample granges
+Wrote GATA3.train.labels.tsv.gz.sample.pkl.gz
+FUNCTION get_label DTA:
+A549 B ALL chroms32918
+A549 U ALL chroms32918
+
+Parsed ['/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.A549.biorep1.techrep3.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.A549.biorep1.techrep1.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.A549.biorep1.techrep2.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.A549.biorep2.techrep1.bam'] for average 5p cuts for A549
+Wrote GATA3_A549.dnase.pkl.gz
+FUNCTION get_bam5p DTA:
+A549 B ALL chroms32918
+A549 U ALL chroms32918
+
+Parsed chr10
+Parsed chr11
+Parsed chr12
+Parsed chr13
+Parsed chr14
+Parsed chr15
+Parsed chr16
+Parsed chr17
+Parsed chr18
+Parsed chr19
+Parsed chr1
+Parsed chr20
+Parsed chr21
+Parsed chr22
+Parsed chr2
+Parsed chr3
+Parsed chr4
+Parsed chr5
+Parsed chr6
+Parsed chr7
+Parsed chr8
+Parsed chr9
+Parsed chr23
+Parsed fasta file /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/misc/hg19.genome.fa.gz
+Wrote GATA3_A549.seq.pkl.gz
+FUNCTION get_seq DTA:
+CTGGGCAATGTGTGGGATGGAAACAGTTTTCCTTCGCTGCCAAGAGTGTCTGCGTCTCTAAGGAGCTGACTTAATGCTTTTATCAGATCC
+A549 B ALL chroms32918
+TCTAAAAAAATTAGCTGAGTGCAGTGGCGTGCACCTGTGGTCCCAGCTACTGTGGAGGTTGAGGCGGGAGGATTGCTTGAACCCAGGAGA
+A549 U ALL chroms32918
+
+A549 B 32917 [ 0.  0.  0.  1.  0.  0.  1.  0.  0.  0.]
+A549 U 32917 [ 0.  0.  1.  0.  0.  0.  1.  0.  0.  0.]
+Parsed files for GATA3
+Wrote v0.1.GATA3.data.pkl.gz
+FUNCTION load_data DTA:
+X_train(26334, 1000)
+X_test(26334, 1000)
+y_train(6584,)
+y_test(6584,)
+
+Wed Feb  8 23:34:13 PST 2017
+DONE
