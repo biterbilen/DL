@@ -64,6 +64,6 @@ DNN() {
 
 }
 
-slurmMain DNN --jobnames=pi --datadir=/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484 --t=6 --tmin=20 --nc=3 --queue=normal
+slurmMain DNN --jobnames=pi --datadir=/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484 --t=6 --tmin=20 --nc=4 --queue=normal
 
 

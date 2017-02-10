@@ -8,7 +8,7 @@ import random
 import numpy as np
 from keras.utils import np_utils
 
-from ..utils.lambdas import myself, flatten, nuc2ord, listComplement
+from ..utils.lambdas import myself, flatten, nuc2ord, listComplement, label2int
 from ..utils.data_utils import get_meta, get_label_count, get_label, get_bam5p, get_seq
 
 """ dta_dir should contain subfolders called misc, labels, & DNAse"""
@@ -43,8 +43,8 @@ def load_data(tf, N=65836, train_frac=0.8, version = 0.1, remove_cell=['SK-N-SH'
         Nnew2 = Nnew // 2
         X = {'B':np.zeros((Nnew2, genomic_window_size * features), dtype=np.float),
              'U':np.zeros((Nnew2, genomic_window_size * features), dtype=np.float)}
-        y = {'B':np.zeros((Nnew2), dtype=np.float),
-             'U':np.zeros((Nnew2), dtype=np.float)}
+        y = {'B':np.zeros((Nnew2), dtype=np.int),
+             'U':np.zeros((Nnew2), dtype=np.int)}
         i = {'B':-1, 'U':-1}
         # save space by deleting
         for cell in seq_dic.keys():
@@ -52,10 +52,12 @@ def load_data(tf, N=65836, train_frac=0.8, version = 0.1, remove_cell=['SK-N-SH'
                 for chrom in seq_dic[cell][label].keys():
                     for ni in range(len(bam5p_dic[cell][label][chrom])):
                         i[label] += 1
-                        y[i[label]] = label
+                        y[label][i[label]] = label2int(label)
+                        #if cell == 'K562' and chrom == 10: 
+                        #    print label, label2int(label)
                         for gi in range(genomic_window_size):
                             i1 = gi * features
-                            i2 = (gi + 1) * features
+                            i2 = i1 + features
                             nuc = seq_dic[cell][label][chrom][ni][gi]
                             if not nuc in 'ACGT':
                                 nuc = random.choice(['A','C','G','T'])
@@ -76,11 +78,11 @@ def load_data(tf, N=65836, train_frac=0.8, version = 0.1, remove_cell=['SK-N-SH'
         train_indices = np.sort(np.random.choice(indices, int(train_frac * Nnew2), replace=False))
         test_indices  = listComplement(indices, train_indices)
 
-        X_train = X['B'][train_indices,:] + X['U'][train_indices,:]
-        y_train = y['B'][train_indices] + y['U'][train_indices]
+        X_train = np.append(X['B'][train_indices,:], X['U'][train_indices,:], axis = 0)
+        y_train = np.append(y['B'][train_indices], y['U'][train_indices])
 
-        X_test = X['B'][test_indices,:] + X['U'][test_indices,:]
-        y_test = y['B'][test_indices] + y['U'][test_indices]
+        X_test = np.append(X['B'][test_indices,:], X['U'][test_indices,:], axis = 0)
+        y_test = np.append(y['B'][test_indices], y['U'][test_indices])
 
         if verbose > 1: print "Parsed files for " + tf
         with gzip.open(pkl_fle, 'wb') as handle:
@@ -90,10 +92,9 @@ def load_data(tf, N=65836, train_frac=0.8, version = 0.1, remove_cell=['SK-N-SH'
     if verbose > 0:
         print "FUNCTION " + myself() + " DTA:"
         print 'X_train' + str(X_train.shape)
-        print 'X_test' + str(X_train.shape)
-        print 'y_train' + str(y_test.shape)
+        print 'y_train' + str(y_train.shape)
+        print 'X_test' + str(X_test.shape)
         print 'y_test' + str(y_test.shape)
-        print
 
     return (X_train, y_train), (X_test, y_test)
 

@@ -14,7 +14,7 @@ from ..utils.lambdas import myself, chrstrip
 #------------------FASTA---------------------------
 def get_seq(fle, label_dic, fle_tag='TF', force_read=False, verbose=1):
 
-    pkl_fle = fle_tag + '_' + '_'.join(label_dic.keys()) + '.seq.pkl.gz'
+    pkl_fle = fle_tag + '_' + '_'.join(sorted(label_dic.keys())) + '.seq.pkl.gz'
     try:
         if force_read:
             raise Exception('forced_read')
@@ -87,7 +87,7 @@ def test_get_seq():
 """ could not decipher what this function returns; cut counts per position?"""
 def get_bam5p(bdir, label_dic, strands=['+', '-'], fle_tag="TF", #genomic_window_size=200,\
               force_read=False, verbose=1):
-    pkl_fle = fle_tag + "_" + "_".join(label_dic.keys()) + '.dnase.pkl.gz'
+    pkl_fle = fle_tag + "_" + "_".join(sorted(label_dic.keys())) + '.dnase.pkl.gz'
     try:
         if force_read:
             raise Exception('forced_read')

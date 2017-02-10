@@ -1,0 +1,99 @@
+Thu Feb  9 23:50:48 PST 2017
+sh-5-23.local
+FUNCTION Thu Feb 9 23:50:48 PST 2017: DNNpi EGR1
+Using Theano backend.
+[806211 refs]
+4 8229 52733 50644526
+Parsed /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/labels/EGR1.train.labels.tsv.gz for counts
+Wrote EGR1.train.labels.tsv.gz.count.pkl.gz
+FUNCTION get_label_count DTA:
+N= 65836  Nx= 8229  Nnew= 65832
+{'HCT116': {'A': 856216, 'B': 175994, 'U': 50644526}, 'H1-hESC': {'A': 395183, 'B': 52733, 'U': 51228820}, 'MCF-7': {'A': 596800, 'B': 58793, 'U': 51021143}, 'GM12878': {'A': 379258, 'B': 72595, 'U': 51224883}}
+
+Parsed /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/labels/EGR1.train.labels.tsv.gz to sample granges
+Wrote EGR1.train.labels.tsv.gz.sample.pkl.gz
+FUNCTION get_label DTA:
+HCT116 B ALL chroms8229
+HCT116 U ALL chroms8229
+H1-hESC B ALL chroms8229
+H1-hESC U ALL chroms8229
+MCF-7 B ALL chroms8229
+MCF-7 U ALL chroms8229
+GM12878 B ALL chroms8229
+GM12878 U ALL chroms8229
+
+Parsed ['/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.HCT116.biorep2.techrep1.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.HCT116.biorep1.techrep1.bam'] for average 5p cuts for HCT116
+Parsed ['/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.H1-hESC.biorep1.techrep1.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.H1-hESC.biorep1.techrep2.bam'] for average 5p cuts for H1-hESC
+Parsed ['/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.MCF-7.biorep1.techrep2.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.MCF-7.biorep1.techrep4.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.MCF-7.biorep1.techrep3.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.MCF-7.biorep1.techrep5.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.MCF-7.biorep1.techrep1.bam'] for average 5p cuts for MCF-7
+Parsed ['/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.GM12878.biorep1.techrep1.bam', '/home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/DNAse/DNASE.GM12878.biorep2.techrep1.bam'] for average 5p cuts for GM12878
+Wrote EGR1_GM12878_H1-hESC_HCT116_MCF-7.dnase.pkl.gz
+FUNCTION get_bam5p DTA:
+HCT116 B ALL chroms8229
+HCT116 U ALL chroms8229
+H1-hESC B ALL chroms8229
+H1-hESC U ALL chroms8229
+MCF-7 B ALL chroms8229
+MCF-7 U ALL chroms8229
+GM12878 B ALL chroms8229
+GM12878 U ALL chroms8229
+
+Parsed chr10
+Parsed chr11
+Parsed chr12
+Parsed chr13
+Parsed chr14
+Parsed chr15
+Parsed chr16
+Parsed chr17
+Parsed chr18
+Parsed chr19
+Parsed chr1
+Parsed chr20
+Parsed chr21
+Parsed chr22
+Parsed chr2
+Parsed chr3
+Parsed chr4
+Parsed chr5
+Parsed chr6
+Parsed chr7
+Parsed chr8
+Parsed chr9
+Parsed chr23
+Parsed fasta file /home/biter/PI_HOME/Data/casco/ENCODE/hg19/Synapse_syn6131484/misc/hg19.genome.fa.gz
+Wrote EGR1_GM12878_H1-hESC_HCT116_MCF-7.seq.pkl.gz
+FUNCTION get_seq DTA:
+TACCTAGGGTTAGGCATAGGCCACTGCAAGACTGAGCAAGACGGCAGAGTCTGGCTCAGCCAGGGCAGCGAGAAGGATGATCAGGCTTCC
+HCT116 B ALL chroms8229
+AACTAGTGGACAAGAGAACATTTTGTTTCATTTTTGTGTGTGTAGTGAGTTCCTTTATTGCACACTGGATGATCTATAGGAGCAATGAAT
+HCT116 U ALL chroms8229
+TGCGGGCGTGTGTGTGGGCGTGTGTGTGTGGGCGTGTGTGGGCACGTGAGTGTGGGCATGTGTGTGCGGGCATGTGAGTGGGCGTGTGAG
+H1-hESC B ALL chroms8229
+GCGCCCTCTGCTGGCGTCGGAGCATTGCAGGGCTCTCTTGCTCGCAGTGTAGTGGCGGCACGCCGCCTGCTGGCAGCTAGGGACATTGCA
+H1-hESC U ALL chroms8229
+CAGGCGCACTGGAGCCGATTGCGCAGGCGTGGCTCTCACACGCGCTGCCCTGTTGGCGTTGGTGCGGGACTGCGCAGGCGCGCGGGGCAA
+MCF-7 B ALL chroms8229
+AGAGCGTCTTATTCTATCTTCCTCATGCATGGGCTCTGCATGGTTCTGCCCAGTTCCCTCTTGCCTGGTTTTTCAGTTATTTGTGGATTC
+MCF-7 U ALL chroms8229
+CCCCGCCAACCCCCGCCACCACACACACACACCCCCTCGCCTTCCGCGGCCCTACTCCCTCCAGGTGACCCCACCCCCGCAGCTCCTCCT
+GM12878 B ALL chroms8229
+GACCCTCCTGTTGGCTTTTTTACAAGACTGCTATGTTCCACCATAGACAAGAAAGGATCTCCTTTGAAACTTATGTGTGCACTTCACAGA
+GM12878 U ALL chroms8229
+
+HCT116 B 8228 [ 0.  0.  1.  0.  0.  0.  0.  1.  0.  0.]
+HCT116 U 8228 [ 0.  1.  0.  0.  0.  0.  0.  1.  0.  0.]
+H1-hESC B 16457 [ 0.  0.  0.  0.  1.  0.  0.  0.  1.  0.]
+H1-hESC U 16457 [ 0.  0.  1.  0.  0.  0.  1.  0.  0.  0.]
+MCF-7 B 24686 [ 0.   0.   0.   1.   0.   0.4  0.   1.   0.   0. ]
+MCF-7 U 24686 [ 0.  0.  0.  1.  0.  0.  1.  0.  0.  0.]
+GM12878 B 32915 [ 0.   0.   0.   1.   0.   0.5  1.   0.   0.   0. ]
+GM12878 U 32915 [ 0.  0.  0.  1.  0.  0.  0.  0.  1.  0.]
+Parsed files for EGR1
+Wrote v0.1.EGR1.data.pkl.gz
+FUNCTION load_data DTA:
+X_train(52664, 1000)
+y_train(52664,)
+X_test(13168, 1000)
+y_test(13168,)
+Fri Feb 10 01:42:11 PST 2017
+DONE
